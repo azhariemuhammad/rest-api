@@ -5,13 +5,13 @@ Demo app with basic REST API
 RESTful API.RESTful API / REST API merupakan implementasi dari API (Application Programming Interface). REST (Representional State Transfer) adalah suatu arsitektur metode komunikasi yang menggunakan protokol HTTP untuk pertukaran data dan metode ini sering diterapkan dalam pengembangan aplikasi. Dimana tujuannya adalah untuk menjadikan sistem yang memiliki performa yang baik, cepat dan mudah untuk di kembangkan (scale) terutama dalam pertukaran dan komunikasi data.
 
 
-#### Route |   HTTP  |     Desc
+Route |   HTTP  |     Desc
 --------------------|------------------|------------------|
 /api/hello?name={name} | GET | Print Hello, {name}
 
-### list of routes
+list of routes
 
-### Route |   HTTP  |     Desc
+Route |   HTTP  |     Desc
 --------------------|------------------|------------------|
 /api/signup    | POST   | Sign up with new user info
 /api/signin    | POST   | Sign in while get an access token based on credential
@@ -22,9 +22,9 @@ RESTful API.RESTful API / REST API merupakan implementasi dari API (Application 
 /api/users/:id | PUT    | Update a user with new info (admin adn authenticated user)
 
 
-### list of filter routes:
+list of filter routes:
 
-### Route |   HTTP  |     Desc
+Route |   HTTP  |     Desc
 --------------------|------------------|------------------|
 /api/users?name="{name}" | GET | Get {name} match in users
 /api/users/?name="{na}" | GET | Get {na} like in users
