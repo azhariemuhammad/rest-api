@@ -6,6 +6,7 @@ const secret = process.env.SECRET_KEY
 
 
 
+
 const signin = (req, res) => {
   User.findOne({where:{username:req.body.username}})
   .then(user => {
@@ -17,19 +18,17 @@ const signin = (req, res) => {
             id : user.id,
             username : user.username,
             isAdmin : user.isAdmin
-          }, secret, (err, token) => {
+          }, secret,{expiresIn :'1h'}, (err, token) => {
             if(err){
               console.log(err);
             }else{
               res.send(token)
             }
           })
-        }else{
-          res.send('check again your password or username')
         }
       })
     }else{
-      res.status(404).send('Please complete the form')
+      res.status(404).send('check again your password or username')
     }
   })
 }
