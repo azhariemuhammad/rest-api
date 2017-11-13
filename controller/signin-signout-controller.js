@@ -1,5 +1,4 @@
-const Models = require('../models')
-//const User = Models
+const User = require('../models').User
 const bcrypt  = require('bcrypt');
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
@@ -8,7 +7,7 @@ const secret = process.env.SECRET_KEY
 
 
 const signin = (req, res) => {
-  Models.User.findOne({where:{username:req.body.username}})
+  User.findOne({where:{username:req.body.username}})
   .then(user => {
     if(user){
       bcrypt.compare(req.body.password, user.password).then(result => {
@@ -30,13 +29,13 @@ const signin = (req, res) => {
         }
       })
     }else{
-      console.log('error');
+      res.status(404).send('Please complete the form')
     }
   })
 }
 
 const signup = (req, res) => {
-  Models.User.create({
+  User.create({
     username : req.body.username,
     password : req.body.password
   })

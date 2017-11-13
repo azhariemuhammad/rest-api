@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-//require('dotenv').config()
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -11,14 +11,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(morgan('dev'))
-// app.use(session({
-//   secret: 'jossgandosgraotos'
-// }))
 
-//
-// app.get('/', function(req, res){
-//   res.send('hello world');
-// });
+
+app.get('/', function(req, res){
+  res.send('hello world');
+});
 
 
 

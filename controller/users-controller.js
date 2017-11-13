@@ -1,10 +1,10 @@
-const Models = require('../models')
+const User = require('../models').User
 
 
 
 
 const findAll =   (req, res) => {
-  Models.User.findAll().then(dataUsers => {
+  User.findAll().then(dataUsers => {
     res.send(dataUsers)
   })
   .catch(err => {
@@ -13,7 +13,7 @@ const findAll =   (req, res) => {
 }
 
 const create = (req, res) => {
-  Models.User.create({
+  User.create({
     username: req.body.username,
     password : req.body.password,
     isAdmin : req.body.isAdmin
@@ -26,7 +26,7 @@ const create = (req, res) => {
 }
 
 const findById = (req, res) => {
-  Models.User.findById(req.params.id)
+  User.findById(req.params.id)
   .then(dataUser => {
     res.send(dataUser)
   }).catch(err => {
@@ -36,7 +36,7 @@ const findById = (req, res) => {
 }
 
 const update = (req, res) => {
-  Models.User.update({
+  User.update({
     username : req.body.username,
     password : req.body.password,
     isAdmin : req.body.isAdmin
@@ -50,7 +50,7 @@ const update = (req, res) => {
 }
 
 const destroy = (req, res) => {
-  Models.User.destroy({
+  User.destroy({
     where:{id:req.params.id}
   }).then(() => {
     res.send('succes delete')
