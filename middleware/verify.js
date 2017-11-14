@@ -23,7 +23,8 @@ const isAdmin = (req, res, next) => {
 }
 
 const isOwner = (req, res, next) => {
-  if(req.headers.decoded.id == req.params.id){
+  let admin = req.headers.decoded.isAdmin
+  if(req.headers.decoded.id === req.params.id || admin === true){
     next()
   }else{
     res.status(401).send(`you're not allowed`)
