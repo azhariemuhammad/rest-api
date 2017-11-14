@@ -41,7 +41,8 @@ const update = (req, res) => {
     password : req.body.password,
     isAdmin : req.body.isAdmin
   },{
-    where:{id:req.params.id}
+    where:{id:req.params.id},
+    individualHooks: true
   }).then(dataUser => {
     res.send(dataUser)
   }).catch(err => {
