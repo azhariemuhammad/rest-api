@@ -10,24 +10,24 @@ const secret = process.env.SECRET_KEY
 const signin = (req, res) => {
   User.findOne({where:{username:req.body.username}})
   .then(user => {
-    if(user){
-      bcrypt.compare(req.body.password, user.password).then(result => {
-        if(result){
+    if (user) {
+      bcrypt.compare(req.body.password, user.password).then( result => {
+        if (result){
           jwt.sign(
           {
             id : user.id,
             username : user.username,
             isAdmin : user.isAdmin
           }, secret,{expiresIn :'1h'}, (err, token) => {
-            if(err){
+            if (err) {
               console.log(err);
-            }else{
+            } else {
               res.send(token)
             }
           })
         }
       })
-    }else{
+    } else {
       res.status(404).send('check again your password or username')
     }
   })
